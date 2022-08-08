@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+     <style>
+       table {
+         border-collapse: separate;
+         border-spacing: 20px 0;
+       }
+       th {
+         background-color: #4287f5;
+         color: white;
+       }
+       th,
+       td {
+         width: 150px;
+         text-align: center;
+         border: 1px solid black;
+         padding: 5px;
+       }
+       h2 {
+         color: #4287f5;
+       }
+     </style>
+     <h1>{% block title %} Latest Data Visualized {% endblock %}</h1>
+         <div class='post'>
+             <table>
+             <tr>
+                 <td> <h2> Timestamp </h2> </td>
+                 <td> <h2> Review Score </h2> </td>
+                 <td> <h2> Title </h2> </td>
+                 <td> <h2> Content </h2> </td>
+                 <td> <h2> Record Edit Feature </h2> </td>
+             </tr>
+             {% for post in posts %}
+             <tr>
+                 <td>{{ post['created'] }}</td>
+                 <td>{{ post['review_score'] }}</td>
+                 <td>{{ post['title'] }}</td>
+                 <td>{{ post['content'] }}</td>
+                 <td><a href="{{ url_for('edit', id=post['id']) }}">Edit Row</a></td>
+             </tr>
+             {% endfor %}
+             </table>
+         </div>
+{% endblock %}

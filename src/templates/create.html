@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} Add a New Post {% endblock %}</h2>
+    <form method="post">
+        <label for="review_score">Review Score</label>
+        <br>
+        <input type="number" 
+               name="review_score"
+               placeholder="Post Review Score"
+               ondrop="return false;" 
+               onpaste="return false;" 
+               value="{{ request.form['review_score'] }}"
+               />
+        <div height="5px"> </div>
+        <br>
+        <label for="title">Title</label>
+        <br>
+        <input type="text"
+               name="title"
+               placeholder="Post title"
+               value="{{ request.form['title'] }}"></input>
+        <div height="5px"> </div>
+        <br>
+        <label for="content">Post Content</label>
+        <br>
+        <textarea name="content"
+                  placeholder="Post content"
+                  rows="15"
+                  cols="60"
+                  >{{ request.form['content'] }}</textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
